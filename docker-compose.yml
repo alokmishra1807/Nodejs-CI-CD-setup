@@ -1,0 +1,35 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      PORT: 8080
+      MONGODB_URI: mongodb://mongodb:27017/Wanderlust
+
+    depends_on:
+      - mongodb
+
+    networks:
+      - wanderlust-network
+
+  mongodb:
+    image: mongo:8
+
+    volumes:
+      - mongo-data:/data/db
+
+    networks:
+      - wanderlust-network
+
+
+volumes:
+  mongo-data:
+
+
+networks:
+  wanderlust-network:
