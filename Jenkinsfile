@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label "dev"}
 
     stages {
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 withCredentials([
                     usernamePassword(
-                        credentialsId: "dockerHub",
+                        credentialsId: "dockerHubCreds",
                         usernameVariable: "dockerHubUser",
                         passwordVariable: "dockerHubPass"
                     )
@@ -36,7 +36,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                sh "docker compose up -d --build"
+                sh "docker compose up -d"
             }
         }
     }
