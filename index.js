@@ -28,7 +28,7 @@ mongoose
 
 
 app.get("/", (req, res) => {
-    res.send("Hello World: This is to test the webhook between github and Jenkins retry 2");
+    res.send("Hello World: This is to test the webhook between github and Jenkins retry 2 reason was we have to set up pipeline script from scm");
 });
 
 
